@@ -312,38 +312,16 @@ body{
 }
 /* ======= FIX: móvil en vertical — menos espacio entre título y cubo ======= */
 @media (max-width: 720px) {
-  /* El título ocupa menos y tiene menos padding */
-  .site-header{
-    padding: .6rem 1rem .4rem;
-  }
-  .title{
-    font-size: clamp(1.4rem, 5.2vw, 1.8rem);
-    letter-spacing: .05em;
-  }
-  .subtitle{
-    margin:.2rem 0 0;
-    font-size: .95rem;
-  }
-
-  /* El wrapper deja de centrar vertical: empuja el cubo hacia arriba */
   .wrapper{
-    place-items: start center;  /* antes: center */
-    padding-top: .4rem;         /* menos aire arriba */
+    /* Quita el “crecimiento” que deja aire vertical */
+    flex: 0 0 auto;     /* antes heredaba flex:1 */
+    min-height: auto;   /* evita ocupar toda la altura disponible */
+    place-items: start center;
+    padding-top: .35rem; /* podés afinar este valor */
   }
 
-  /* Menos separación interna del bloque cubo+controles */
-  .stage{
-    gap: .5rem;
-  }
-
-  /* Opcional: acortamos el tamaño del cubo un toque en móviles muy chicos */
-  :root{
-    --size: clamp(220px, 46vmin, 420px);
-  }
-
-  /* Coordenadas un poco más cerca del cubo */
-  .coords{
-    bottom: -1.8rem;
-    font-size: .85rem;
+  /* Opcional: todavía menos aire bajo el título */
+  .site-header{
+    padding: .5rem 1rem .3rem;
   }
 }
